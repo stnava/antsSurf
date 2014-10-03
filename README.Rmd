@@ -1,0 +1,15 @@
+antsSurf
+========
+
+surface rendering with ants
+
+
+```
+ antsSurf -s [ wmt.nii.gz,255x255x255]  -d 0  -o brainSurface.stl
+```
+
+but also see
+
+```
+bash GenerateBrainMesh.sh
+```
