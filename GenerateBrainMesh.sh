@@ -21,7 +21,7 @@ for seg in $segs ; do
 #    ImageMath 3 wm.nii.gz GetLargestComponent wm.nii.gz
     ImageMath 3 wmt.nii.gz PropagateLabelsThroughMask wms.nii.gz thal.nii.gz $topoits 1
     ThresholdImage 3 wmt_label.nii.gz wmt.nii.gz 1  1
-    antsSurf -s [ wmt.nii.gz,255x255x255]  -d antsSurfEx1.png -o ${onm}.${ext} -i 10  
+    antsSurf -s [ wmt.nii.gz,255x255x255]  -d antsSurfEx1.png[0x5x180,255x255x255] -i 10  -o ${onm}.${ext}
     SmoothImage 3 $blob 5 overlay.nii.gz
     ConvertScalarImageToRGB 3 overlay.nii.gz overlay_rgb.nii.gz blob.nii.gz hot
 #     -f, --functional-overlay [rgbImageFileName,maskImageFileName,<alpha=1>]
