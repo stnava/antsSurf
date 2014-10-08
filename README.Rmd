@@ -13,3 +13,13 @@ but also see
 ```
 bash GenerateBrainMesh.sh
 ```
+
+
+Example 1: Just a surface
+
+![basic](https://raw.githubusercontent.com/stnava/antsSurf/master/antsSurfEx1.png)
+
+
+Example 2: Surface plus overlay plus rotation
+
+![basic](https://raw.githubusercontent.com/stnava/antsSurf/master/antsSurfEx2.png)
