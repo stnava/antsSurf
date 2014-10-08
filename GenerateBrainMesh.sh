@@ -1,4 +1,5 @@
 segs=PEDS015_20110812_BrainSegmentation.nii.gz
+blob=blob.nii.gz
 ext=stl
 for seg in $segs ; do 
   onm=`echo $seg | cut -d '.' -f 1`
@@ -20,6 +21,10 @@ for seg in $segs ; do
 #    ImageMath 3 wm.nii.gz GetLargestComponent wm.nii.gz
     ImageMath 3 wmt.nii.gz PropagateLabelsThroughMask wms.nii.gz thal.nii.gz $topoits 1
     ThresholdImage 3 wmt_label.nii.gz wmt.nii.gz 1  1
-    antsSurf -s [ wmt.nii.gz,255x255x255]  -d $1  -o ${onm}.${ext} -i 0  -a 1.e9 -i 100
+    antsSurf -s [ wmt.nii.gz,255x255x255]  -d antsSurfEx1.png -o ${onm}.${ext} -i 10  
+    SmoothImage 3 $blob 5 overlay.nii.gz
+    ConvertScalarImageToRGB 3 overlay.nii.gz overlay_rgb.nii.gz blob.nii.gz hot
+#     -f, --functional-overlay [rgbImageFileName,maskImageFileName,<alpha=1>]
+    antsSurf -s [ wmt.nii.gz,255x255x255]  -f [ overlay_rgb.nii.gz, blob.nii.gz, 0.5 ] -d antsSurfEx2.png[270x0x270,155x255x255]  -o ${onm}.${ext} -i 10   
   done
 done
