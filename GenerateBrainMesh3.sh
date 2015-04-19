@@ -9,7 +9,7 @@ ext=stl # or use ply  or  vtk
 onm=`echo $seg | cut -d '.' -f 1`
 onm=${onm}_kappa
 ThresholdImage 3 $seg wm.nii.gz 3 4
-SetDirectionByMatrix wm.nii.gz wm.nii.gz 1 0 0 0 1 0 0 0 1
+# SetDirectionByMatrix wm.nii.gz wm.nii.gz 1 0 0 0 1 0 0 0 1
 ImageMath 3 wm.nii.gz FillHoles wm.nii.gz
 ImageMath 3 wm.nii.gz GetLargestComponent wm.nii.gz
 SmoothImage 3 wm.nii.gz 1.0 wms.nii.gz
