@@ -40,9 +40,11 @@ ImageMath 3 p1.nii.gz + p1.nii.gz n2.nii.gz
 ImageMath 3 p1.nii.gz + p1.nii.gz n3.nii.gz
 cp p1.nii.gz overlay.nii.gz
 SmoothImage 3 overlay.nii.gz 1.0 overlay.nii.gz
-ThresholdImage 3 wms.nii.gz kblob.nii.gz 0.1 Inf
-ConvertScalarImageToRGB 3 overlay.nii.gz overlay_rgb.nii.gz kblob.nii.gz hot none 1 2 0 255 lookupTable.csv
-antsSurf -s [ wm.nii.gz,255x255x255] -f [ overlay_rgb.nii.gz, kblob.nii.gz, 0.5 ] -i 25 -d antsSurfEx4.png[270x0x270,255x255x255]  -o ${onm}.${ext}
+ThresholdImage 3 overlay.nii.gz kblob1.nii.gz 1.5 2.0
+ThresholdImage 3 overlay.nii.gz kblob2.nii.gz 1.0 1.5
+ConvertScalarImageToRGB 3 overlay.nii.gz overlay_rgb1.nii.gz kblob1.nii.gz hot none 1.5 2.0 0 255 lookupTable.csv
+ConvertScalarImageToRGB 3 overlay.nii.gz overlay_rgb2.nii.gz kblob2.nii.gz cool none 1.0 1.5 0 255 lookupTable.csv
+antsSurf -s [ wm.nii.gz,255x255x255]  -f [ overlay_rgb1.nii.gz, kblob1.nii.gz, 0.5 ]  -f [ overlay_rgb2.nii.gz, kblob2.nii.gz, 0.5 ] -i 25 -d antsSurfEx4.png[270x0x270,255x255x255]  -o ${onm}.${ext}
 
 
 
