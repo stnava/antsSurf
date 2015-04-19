@@ -20,7 +20,7 @@ SmoothImage 3 $kappa 1 overlay.nii.gz
 cp $kappa overlay.nii.gz
 ThresholdImage 3 wms.nii.gz kblob.nii.gz 0.1 Inf
 ConvertScalarImageToRGB 3 overlay.nii.gz overlay_rgb.nii.gz kblob.nii.gz jet none 127.6 128.4 0 255 lookupTable.csv
-antsSurf -s [ wm.nii.gz,255x255x255] -f [ overlay_rgb.nii.gz, kblob.nii.gz, 0.5 ] -i 25 -d antsSurfEx3.png[0x170x0,155x255x255]  -o ${onm}.${ext}
+antsSurf -s [ wm.nii.gz,255x255x255] -f [ overlay_rgb.nii.gz, kblob.nii.gz, 0.5 ] -i 25 -d antsSurfEx3.png[270x0x270,255x255x255]  -o ${onm}.${ext}
 
 # surface classification
 SurfaceCurvature wms.nii.gz $kappa 1.5 5
@@ -42,7 +42,7 @@ cp p1.nii.gz overlay.nii.gz
 SmoothImage 3 overlay.nii.gz 1.0 overlay.nii.gz
 ThresholdImage 3 wms.nii.gz kblob.nii.gz 0.1 Inf
 ConvertScalarImageToRGB 3 overlay.nii.gz overlay_rgb.nii.gz kblob.nii.gz hot none 1 2 0 255 lookupTable.csv
-antsSurf -s [ wm.nii.gz,255x255x255] -f [ overlay_rgb.nii.gz, kblob.nii.gz, 0.5 ] -i 25 -d antsSurfEx4.png[0x170x0,155x255x255]  -o ${onm}.${ext}
+antsSurf -s [ wm.nii.gz,255x255x255] -f [ overlay_rgb.nii.gz, kblob.nii.gz, 0.5 ] -i 25 -d antsSurfEx4.png[270x0x270,255x255x255]  -o ${onm}.${ext}
 
 
 
